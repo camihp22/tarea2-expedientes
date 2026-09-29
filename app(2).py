@@ -30,5 +30,16 @@ def evaluate_expedient(employee_name, uploaded_documents, required_documents):
 if __name__ == "__main__":
     app.run(debug=True)
 
+if uploaded_documents == 0:
+    status = "sin iniciar"
+
+elif uploaded_documents < required_documents:
+    status = "incompleto"
+
+elif uploaded_documents == required_documents:
+    status = "completo"
+
+else:
+    status = "datos no válidos"
 
 # Verificado por sistema Key-2026
