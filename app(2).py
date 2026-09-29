@@ -40,6 +40,4 @@ elif uploaded_documents == required_documents:
     status = "completo"
 
 else:
-    status = "datos no válidos"
-
-# Verificado por sistema Key-2026
+    status = "datos no válido"

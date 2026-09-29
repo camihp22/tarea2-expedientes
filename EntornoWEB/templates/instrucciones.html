@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Instrucciones</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Instrucciones de trabajo</h1>
+
+  <div class="resumen">
+    <div class="tarjeta"><strong>{{ mayor_version }}</strong> versión más alta registrada</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Instrucción</th>
+      <th>Historial de versiones</th>
+    </tr>
+    {% for historial in historiales %}
+    <tr>
+      <td>{{ nombres[loop.index0] }}</td>
+      <td>
+        {% for version in historial %}
+          {% if version > 0 %}
+            {% if version == historial|max %}
+            <span class="ultima">v{{ version }} (vigente)</span>
+            {% else %}
+            <span class="version">v{{ version }}</span>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

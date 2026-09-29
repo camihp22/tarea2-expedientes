@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Expedientes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Expedientes del personal</h1>
+
+  <div class="resumen">
+    <div class="tarjeta"><strong>{{ expedientes_completos }}</strong> expedientes completos</div>
+    <div class="tarjeta"><strong>{{ documentos_faltantes }}</strong> documentos faltantes</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Empleado</th>
+      {% for documento in documentos %}
+      <th>{{ documento }}</th>
+      {% endfor %}
+    </tr>
+    {% for fila in matriz %}
+    <tr>
+      <td>{{ nombres[loop.index0] }}</td>
+      {% for estado in fila %}
+        {% if estado %}
+        <td class="ok">Completo</td>
+        {% else %}
+        <td class="pendiente">Pendiente</td>
+        {% endif %}
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
